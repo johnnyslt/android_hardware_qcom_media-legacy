@@ -8782,7 +8782,7 @@ OMX_ERRORTYPE omx_vdec::vdec_alloc_h264_mv()
   if (allocation.align != 8192)
     allocation.align = 8192;
 
-  pmem_fd = open(MEM_DEVICE, O_RDWR);
+  pmem_fd = open(MEM_DEVICE,O_SYNC|O_RDWR);
 
   if ((int)(pmem_fd) < 0)
       return OMX_ErrorInsufficientResources;
