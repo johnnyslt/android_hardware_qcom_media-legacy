@@ -16,7 +16,7 @@ libmm-venc-def += -DT_ARM
 libmm-venc-def += -Dinline=__inline
 libmm-venc-def += -D_ANDROID_
 libmm-venc-def += -UENABLE_DEBUG_LOW
-libmm-venc-def += -DENABLE_DEBUG_HIGH
+#libmm-venc-def += -DENABLE_DEBUG_HIGH
 libmm-venc-def += -DENABLE_DEBUG_ERROR
 libmm-venc-def += -UINPUT_BUFFER_LOG
 libmm-venc-def += -UOUTPUT_BUFFER_LOG
@@ -86,6 +86,8 @@ endif
 
 LOCAL_SRC_FILES   += ../common/src/extra_data_handler.cpp
 
+LOCAL_ADDITIONAL_DEPENDENCIES  := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
+
 include $(BUILD_SHARED_LIBRARY)
 
 # -----------------------------------------------------------------------------
@@ -114,6 +116,8 @@ LOCAL_SRC_FILES                 += test/camera_test.cpp
 LOCAL_SRC_FILES                 += test/venc_util.c
 LOCAL_SRC_FILES                 += test/fb_test.c
 
+LOCAL_ADDITIONAL_DEPENDENCIES  := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
+
 include $(BUILD_EXECUTABLE)
 
 # -----------------------------------------------------------------------------
@@ -136,6 +140,8 @@ LOCAL_PRELINK_MODULE            := false
 
 LOCAL_SRC_FILES                 := test/video_encoder_test.c
 LOCAL_SRC_FILES                 += test/queue.c
+
+LOCAL_ADDITIONAL_DEPENDENCIES  := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
 include $(BUILD_EXECUTABLE)
 
